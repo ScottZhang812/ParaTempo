@@ -1,13 +1,16 @@
 # ParaTempo: Efficient Parallel Reasoning via Temporal Confidence
 
-Official code and dataset repository for the arXiv version of **ParaTempo**.
-ParaTempo is a training-free asynchronous parallel reasoning framework that
-uses branch-local temporal confidence to prune, retire, fork, and globally stop
-parallel reasoning branches.
+Official code and dataset repository for the arXiv paper: **ParaTempo: Efficient Parallel Reasoning via Temporal Confidence**.
+
+
+| ![./assets/overview.png](./assets/overview.png) |
+|:--:|
+|ParaTempo is a training-free asynchronous parallel reasoning framework that uses branch-local temporal confidence to prune, retire, fork, and globally stop parallel reasoning branches.|
+
 
 ## Updates
 
-- **17 Aug, 2026**: Public repository submitted.
+- **17 Aug, 2026**: Public repository published.
 
 ## Code
 
