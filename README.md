@@ -111,8 +111,6 @@ environment variables.
 │   ├── core.py
 │   ├── gpt_oss_completion.py
 │   └── utils.py
-├── scripts/
-│   └── pkl_to_json.py
 ├── server/
 │   ├── serve.sh
 │   └── template/
