@@ -1,0 +1,25 @@
+{% set ns = namespace(is_first=false, is_tool=false, is_output_first=true, system_prompt='', is_first_sp=true, is_last_user=false) %}
+{%- for message in messages %}
+    {%- if message['role'] == 'system' %}
+        {%- if ns.is_first_sp %}
+            {% set ns.system_prompt = ns.system_prompt + message['content'] %}
+            {% set ns.is_first_sp = false %}
+        {%- else %}
+            {% set ns.system_prompt = ns.system_prompt + '\n\n' + message['content'] %}
+        {%- endif %}
+    {%- endif %}
+{%- endfor -%}
+
+{%- for message in messages %}
+    {% set content = message['content'] %}
+    {%- if message['role'] == 'user' %}
+        {%- set ns.is_tool = false -%}
+        {%- set ns.is_first = false -%}
+        {%- set ns.is_last_user = true -%}
+        {{'<|im_start|>user\n' + content + '\n<|im_start|>assistant\n'}}
+    {%- endif %}
+    {%- if message['role'] == 'assistant' and (message['tool_calls'] is not defined or message['tool_calls'] is none)%}
+        {%- set ns.is_last_user = false -%}
+        {{- content}}
+    {%- endif %}
+{%- endfor -%}
